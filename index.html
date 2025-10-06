@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitoblar kutubxonasi</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Systemga qarab dark mode ishlaydi
+        tailwind.config = {
+            darkMode: "media",
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col"
+    style="font-family: Rubik;">
+
+    <div
+        class="block lg:hidden fixed inset-0 flex items-center justify-center text-2xl font-semibold ml-2 mr-2 text-center">
+        This website is only for desktop devices.
+    </div>
+
+    <!-- Navbar -->
+    <header class="bg-white dark:bg-gray-800 shadow p-4 flex justify-center  hidden lg:block">
+        <h1 class="text-2xl font-bold">📚 Kitoblar kutubxonasi</h1>
+    </header>
+
+    <main class="flex-1 container mx-auto p-6  hidden lg:block">
+
+        <!-- Form -->
+        <section class="mb-6 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Kitob qo‘shish</h2>
+            <form id="bookForm" class="grid gap-4 md:grid-cols-2" enctype="multipart/form-data">
+                <input type="text" id="title" placeholder="Kitob nomi" required
+                    class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
+                <input type="text" id="author" placeholder="Muallif" required
+                    class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
+                <input type="number" id="year" placeholder="Yili" required
+                    class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
+
+                <!-- Local cover upload -->
+                <input type="file" id="cover" accept="image/*"
+                    class="p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700">
+
+                <button type="submit"
+                    class="col-span-2 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">
+                    Qo‘shish
+                </button>
+            </form>
+        </section>
+
+        <!-- Kitoblar ro‘yxati -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Kitoblar ro‘yxati</h2>
+
+            <!-- Sort qilish joyi -->
+            <div class="mb-4 flex justify-end">
+                <select id="sortBooks"
+                    class="p-2 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600">
+                    <option value="default">📎 Tartiblash</option>
+                    <option value="year-asc">Yil: eski — yangi</option>
+                    <option value="year-desc">Yil: yangi — eski</option>
+                    <option value="title-asc">Nomi: A — Z</option>
+                    <option value="author-asc">Muallif: A — Z</option>
+                </select>
+            </div>
+
+            <ul id="bookList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Kitoblar shu yerga qo‘shiladi -->
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- JS links -->
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
